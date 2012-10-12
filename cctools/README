@@ -1,0 +1,6 @@
+This directory contains the Darwin CCtools package.
+
+The cctools are free software.  See the file COPYING
+for copying permission. The assembler and some other tools
+are under different terms; see the individual source files
+for details.
