@@ -1,4 +1,4 @@
-include_HEADERS = \
+nobase_include_HEADERS = \
 	mach-o/arch.h \
 	mach-o/arm/reloc.h \
 	mach-o/fat.h \
