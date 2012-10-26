@@ -1,4 +1,8 @@
-bin_PROGRAMS = ar
+arbindir = ${prefix}/${target_noncanonical}/bin
+arbin_PROGRAMS = ar
+
+install-exec-local:
+	install -c -s -m 755 ar $(prefix)/bin/${target_noncanonical}-ar
 
 ar_SOURCES = \
 	append.c \

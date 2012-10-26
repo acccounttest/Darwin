@@ -1,4 +1,5 @@
-bin_PROGRAMS = \
+toolsbindir = ${prefix}/${target_noncanonical}/bin
+toolsbin_PROGRAMS = \
 	lipo \
 	size \
 	strings \
@@ -18,6 +19,27 @@ bin_PROGRAMS = \
 	install_name_tool \
 	codesign_allocate \
 	ctf_insert
+
+install-exec-local:
+	install -c -s -m 755 lipo $(prefix)/bin/${target_noncanonical}-lipo
+	install -c -s -m 755 size $(prefix)/bin/${target_noncanonical}-size
+	install -c -s -m 755 strings $(prefix)/bin/${target_noncanonical}-strings
+	install -c -s -m 755 nm $(prefix)/bin/${target_noncanonical}-nm
+	install -c -s -m 755 libtool $(prefix)/bin/${target_noncanonical}-libtool
+	install -c -s -m 755 checksyms $(prefix)/bin/${target_noncanonical}-checksyms
+	install -c -s -m 755 indr $(prefix)/bin/${target_noncanonical}-indr
+	install -c -s -m 755 strip $(prefix)/bin/${target_noncanonical}-strip
+	install -c -s -m 755 nmedit $(prefix)/bin/${target_noncanonical}-nmedit
+	install -c -s -m 755 segedit $(prefix)/bin/${target_noncanonical}-segedit
+	install -c -s -m 755 cmpdylib $(prefix)/bin/${target_noncanonical}-cmpdylib
+	install -c -s -m 755 pagestuff $(prefix)/bin/${target_noncanonical}-pagestuff
+	install -c -s -m 755 redo_prebinding $(prefix)/bin/${target_noncanonical}-redo_prebinding
+	install -c -s -m 755 seg_addr_table $(prefix)/bin/${target_noncanonical}-seg_addr_table
+	install -c -s -m 755 check_dylib $(prefix)/bin/${target_noncanonical}-check_dylib
+	install -c -s -m 755 seg_hack $(prefix)/bin/${target_noncanonical}-seg_hack
+	install -c -s -m 755 install_name_tool $(prefix)/bin/${target_noncanonical}-install_name_tool
+	install -c -s -m 755 codesign_allocate $(prefix)/bin/${target_noncanonical}-codesign_allocate
+	install	-c -s -m 755 ctf_insert $(prefix)/bin/${target_noncanonical}-ctf_insert
 
 lib_LIBRARIES = \
 	libredo_prebinding.a

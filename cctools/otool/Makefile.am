@@ -1,5 +1,9 @@
-bin_PROGRAMS = \
+otoolbindir = ${prefix}/${target_noncanonical}/bin
+otoolbin_PROGRAMS = \
 	otool
+
+install-exec-local:
+	install -c -s -m 755 otool $(prefix)/bin/${target_noncanonical}-otool
 
 otool_SOURCES = \
 	main.c \

@@ -1,5 +1,9 @@
-bin_PROGRAMS = \
+gprofbindir = ${prefix}/${target_noncanonical}/bin
+gprofbin_PROGRAMS = \
 	gprof
+
+install-exec-local:
+	install -c -s -m 755 gprof $(prefix)/bin/${target_noncanonical}-gprof
 
 gprof_SOURCES = \
 	gprof.c \

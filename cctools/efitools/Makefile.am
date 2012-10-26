@@ -1,6 +1,11 @@
-bin_PROGRAMS = \
+efibindir = ${prefix}/${target_noncanonical}/bin
+efibin_PROGRAMS = \
 	makerelocs \
 	mtoc
+
+install-exec-local:
+	install -c -s -m 755 makerelocs $(prefix)/bin/${target_noncanonical}-makerelocs
+	install -c -s -m 755 mtoc $(prefix)/bin/${target_noncanonical}-mtoc
 
 makerelocs_SOURCES = \
 	makerelocs.c

@@ -14,29 +14,31 @@ noinst_PROGRAMS = \
 # AS-backends installed to the correct location. I found no
 # better and clean way to do it using only Automake variables
 install-exec-local:
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/m68k
-	install -c -s -m 555 as_m68k $(prefix)/libexec/gcc/darwin/m68k/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/m88k
-	install -c -s -m 555 as_m88k $(prefix)/libexec/gcc/darwin/m88k/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/i860
-	install -c -s -m 555 as_i860 $(prefix)/libexec/gcc/darwin/i860/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/ppc
-	install -c -s -m 555 as_ppc $(prefix)/libexec/gcc/darwin/ppc/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/ppc64
-	install -c -s -m 555 as_ppc64 $(prefix)/libexec/gcc/darwin/ppc64/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/hppa
-	install -c -s -m 555 as_hppa $(prefix)/libexec/gcc/darwin/hppa/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/sparc
-	install -c -s -m 555 as_sparc $(prefix)/libexec/gcc/darwin/sparc/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/i386
-	install -c -s -m 555 as_i386 $(prefix)/libexec/gcc/darwin/i386/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/x86_64
-	install -c -s -m 555 as_x86_64 $(prefix)/libexec/gcc/darwin/x86_64/as
-	/bin/mkdir -p $(prefix)/libexec/gcc/darwin/arm
-	install -c -s -m 555 as_arm $(prefix)/libexec/gcc/darwin/arm/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/m68k
+	install -c -s -m 555 as_m68k $(prefix)/${target_noncanonical}/libexec/gcc/darwin/m68k/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/m88k
+	install -c -s -m 555 as_m88k $(prefix)/${target_noncanonical}/libexec/gcc/darwin/m88k/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/i860
+	install -c -s -m 555 as_i860 $(prefix)/${target_noncanonical}/libexec/gcc/darwin/i860/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/ppc
+	install -c -s -m 555 as_ppc $(prefix)/${target_noncanonical}/libexec/gcc/darwin/ppc/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/ppc64
+	install -c -s -m 555 as_ppc64 $(prefix)/${target_noncanonical}/libexec/gcc/darwin/ppc64/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/hppa
+	install -c -s -m 555 as_hppa $(prefix)/${target_noncanonical}/libexec/gcc/darwin/hppa/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/sparc
+	install -c -s -m 555 as_sparc $(prefix)/${target_noncanonical}/libexec/gcc/darwin/sparc/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/i386
+	install -c -s -m 555 as_i386 $(prefix)/${target_noncanonical}/libexec/gcc/darwin/i386/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/x86_64
+	install -c -s -m 555 as_x86_64 $(prefix)/${target_noncanonical}/libexec/gcc/darwin/x86_64/as
+	/bin/mkdir -p $(prefix)/${target_noncanonical}/libexec/gcc/darwin/arm
+	install -c -s -m 555 as_arm $(prefix)/${target_noncanonical}/libexec/gcc/darwin/arm/as
+	ln -sv ../${target_noncanonical}/bin/as $(prefix)/bin/${target_noncanonical}-as
 
-bin_PROGRAMS = \
-	as	
+asbindir = ${prefix}/${target_noncanonical}/bin
+asbin_PROGRAMS = \
+	as
 
 as_common_sources = \
 	as.c \
