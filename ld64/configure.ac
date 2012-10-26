@@ -76,7 +76,9 @@ AC_PROG_RANLIB
 # Checks for libraries.
 
 AC_CONFIG_FILES([Makefile
+                 include/Makefile
                  ld/Makefile
                  libprunetrie/Makefile
+                 man/Makefile
                  tools/Makefile])
 AC_OUTPUT
