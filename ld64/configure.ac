@@ -3,7 +3,7 @@
 
 m4_include(config/acx.m4)
 
-AC_INIT(lol, 2)
+AC_INIT([ld64], [123.2], [http://darwin.placeholder.fr/bugs.html])
 AC_PREREQ([2.69])
 AC_DISABLE_OPTION_CHECKING
 AM_INIT_AUTOMAKE
