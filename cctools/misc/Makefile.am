@@ -40,6 +40,9 @@ install-exec-local:
 	install -c -s -m 755 install_name_tool $(prefix)/bin/${target_noncanonical}-install_name_tool
 	install -c -s -m 755 codesign_allocate $(prefix)/bin/${target_noncanonical}-codesign_allocate
 	install	-c -s -m 755 ctf_insert $(prefix)/bin/${target_noncanonical}-ctf_insert
+	rm -f $(prefix)/bin/${target_noncanonical}-ranlib $(prefix)/${target_noncanonical}/bin/ranlib
+	ln -s libtool $(prefix)/${target_noncanonical}/bin/ranlib
+	ln -s ${target_noncanonical}-libtool $(prefix)/bin/${target_noncanonical}-ranlib
 
 lib_LIBRARIES = \
 	libredo_prebinding.a
