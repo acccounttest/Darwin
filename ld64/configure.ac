@@ -29,7 +29,7 @@ AC_ARG_WITH([libunwind-include],
                 [Specify directory for installed libunwind include files])])
 
 if test "x$with_libunwind_include" != x; then
-    unwindinc="-I$PWD/$with_libunwind_include"
+    unwindinc="$with_libunwind_include"
 else
     AC_MSG_ERROR([Building LD64 requires libunwind headers.. Try the 
                   --with-libunwind-include option to specify its location. 
@@ -42,7 +42,7 @@ AC_ARG_WITH([cctools],
                 [Speficy directory for installed cctools package])])
 
 if test "x$with_cctools" != x; then
-    cctoolsinc="-I$PWD/$with_cctools/include"
+    cctoolsinc="$with_cctools/include"
 else
     AC_MSG_ERROR([Building LD64 requires cctools. Try the --with-cctools option
                   to specify its location. Source code for this package can
@@ -55,7 +55,7 @@ AC_ARG_WITH([dyld],
                 [Specify directory for installed DYLD package])])
 
 if test "x$with_dyld" != x; then
-    dyldinc="-I$PWD/$with_dyld/include"
+    dyldinc="$with_dyld/include"
 else
     AC_MSG_ERROR([Building LD64 requires DYLD. Try the --with-dyld option
                   to specify its location. Source code for this package can

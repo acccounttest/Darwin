@@ -2,7 +2,11 @@ ldbindir = ${prefix}/${target_noncanonical}/bin
 ldbin_PROGRAMS = ld
 
 install-exec-local:
+	mkdir -p -m 755 $(prefix)/bin/
 	install -c -s -m 755 ld $(prefix)/bin/${target_noncanonical}-ld 
+
+uninstall-local:
+	rm -f $(prefix)/bin/${target_noncanonical}-ld
 
 ld_SOURCES = \
 	InputFiles.cpp \
@@ -53,8 +57,13 @@ ld_CFLAGS = \
 
 ld_CPPFLAGS = \
 	-DLD_VERS=\"ld64\" -DNDEBUG \
-	-I../include/passes -I../include/parsers -I../include \
-	${dyldinc} ${cctoolsinc} ${unwindinc}
+	-I$(top_srcdir)/include/passes \
+	-I$(top_srcdir)/include/passes/stubs \
+	-I$(top_srcdir)/include/parsers \
+	-I$(top_srcdir)/include \
+	-I$(top_builddir)/${dyldinc} \
+	-I$(top_builddir)/${cctoolsinc} \
+	-I$(top_builddir)/${unwindinc}
 
 ld_LDADD = \
 	-lLTO
