@@ -7,6 +7,10 @@ install-exec-local:
 	install -c -s -m 755 makerelocs $(prefix)/bin/${target_noncanonical}-makerelocs
 	install -c -s -m 755 mtoc $(prefix)/bin/${target_noncanonical}-mtoc
 
+uninstall-local:
+	rm -f $(prefix)/bin/${target_noncanonical}-mtoc
+	rm -f $(prefix)/bin/${target_noncanonical}-makerelocs
+
 makerelocs_SOURCES = \
 	makerelocs.c
 
@@ -30,18 +34,18 @@ makerelocs_CFLAGS = \
 	-Os -g -Wall
 
 makerelocs_CPPFLAGS = \
-	-I../include
+	-I$(top_srcdir)/include
 
 makerelocs_LDADD = \
-	-L../libstuff \
+	-L$(top_builddir)/libstuff \
 	-lstuff
 
 mtoc_CFLAGS = \
 	-Os -g -Wall
 
 mtoc_CPPFLAGS = \
-	-I../include
+	-I$(top_srcdir)/include
 
 mtoc_LDADD = \
-	-L../libstuff \
+	-L$(top_builddir)/libstuff \
 	-lstuff

@@ -3,7 +3,7 @@
 
 m4_include(config/acx.m4)
 
-AC_INIT([cctools], [800], [http://darwin.placeholder.fr/bugs.html])
+AC_INIT([cctools], [800])
 AC_PREREQ([2.69])
 
 AM_INIT_AUTOMAKE

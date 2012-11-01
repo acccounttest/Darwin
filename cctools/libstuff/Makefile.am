@@ -54,7 +54,7 @@ libstuff_common_cppflags = \
 	-DLTO_SUPPORT \
 	-D_MACH_I386_THREAD_STATUS_FPSTATE_LEGACY_FIELD_NAMES_ \
 	-D_ARCHITECTURE_I386_FPU_FPSTATE_LEGACY_FIELD_NAMES_ \
-	-I../include/
+	-I$(top_srcdir)/include/
 
 libstuff_a_CFLAGS = $(libstuff_common_cflags)
 libstuff_a_CPPFLAGS = $(libstuff_common_cppflags)

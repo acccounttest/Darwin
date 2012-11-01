@@ -36,6 +36,19 @@ install-exec-local:
 	install -c -s -m 555 as_arm $(prefix)/${target_noncanonical}/libexec/gcc/darwin/arm/as
 	ln -sv ../${target_noncanonical}/bin/as $(prefix)/bin/${target_noncanonical}-as
 
+uninstall-local:
+	rm -f $(prefix)/bin/${target_noncanonical}-as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/m68k/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/m88k/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/i860/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/ppc/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/ppc64/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/hppa/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/sparc/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/i386/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/x86_64/as
+	rm -f $(prefix)/${target_noncanonical}/libexec/gcc/darwin/arm/as
+
 asbindir = ${prefix}/${target_noncanonical}/bin
 asbin_PROGRAMS = \
 	as
@@ -64,6 +77,44 @@ as_common_sources = \
 	write_object.c \
 	xmalloc.c \
 	dwarf2dbg.c
+
+noinst_HEADERS = \
+	app.h \
+	atof-ieee.h \
+ 	filenames.h \
+	hash.h \
+	i386-opcode.h \
+	input-scrub.h \
+   	md.h \
+	read.h \
+	struc-symbol.h \
+	arch64_32.h \
+	bignum.h \
+	fixes.h \
+	hex_value.h \
+ 	i386.h \
+	layout.h \
+	messages.h \
+	relax.h \
+	symbols.h \
+	arm_reloc.h \
+	dwarf2dbg.h \
+	flonum.h \
+	hppa-aux.h \
+	i860-opcode.h \
+   	m68k-opcode.h \
+   	obstack.h \
+	sections.h \
+	write_object.h \
+	as.h \
+	expr.h \
+	frags.h \
+	hppa-opcode.h \
+   	input-file.h \
+  	m88k-opcode.h \
+   	ppc-opcode.h \
+  	sparc-opcode.h \
+	xmalloc.h
 
 as_m68k_SOURCES = \
 	m68k.c \
@@ -152,11 +203,11 @@ as_common_cflags = \
 	-Os -g -Wall
 
 as_common_cppflags = \
-	-I../include \
+	-I$(top_srcdir)/include \
 	-DNeXT_MOD
 
 as_common_ldadd = \
-	-L../libstuff/ \
+	-L$(top_builddir)/libstuff/ \
 	-lstuff
 
 as_m68k_CFLAGS = $(as_common_cflags)

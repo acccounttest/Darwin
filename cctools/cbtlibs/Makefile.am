@@ -8,4 +8,4 @@ libsyminfo_a_CFLAGS = \
 
 libsyminfo_a_CPPFLAGS = \
 	-DLIBRARY_API \
-	-I../include
+	-I$(top_srcdir)/include

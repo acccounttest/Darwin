@@ -1,4 +1,4 @@
-man1_MANS = \
+dist_man1_MANS = \
 	ar.1 \
 	as.1 \
 	gprof.1 \
@@ -25,7 +25,7 @@ man1_MANS = \
 	check_dylib.1 \
 	mtoc.1
 
-man3_MANS = \
+dist_man3_MANS = \
 	kld.3 \
 	arch.3 \
 	get_end.3 \
@@ -38,7 +38,7 @@ man3_MANS = \
 	libsyminfo.3 \
 	redo_prebinding.3
 
-man5_MANS = \
+dist_man5_MANS = \
 	Mach-O.5 \
 	a.out.5 \
 	ranlib.5 \

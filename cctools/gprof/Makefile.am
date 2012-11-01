@@ -5,6 +5,9 @@ gprofbin_PROGRAMS = \
 install-exec-local:
 	install -c -s -m 755 gprof $(prefix)/bin/${target_noncanonical}-gprof
 
+uninstall-local:
+	rm -f $(prefix)/bin/${target_noncanonical}-gprof
+
 gprof_SOURCES = \
 	gprof.c \
 	arcs.c \
@@ -16,6 +19,11 @@ gprof_SOURCES = \
 	printlist.c \
 	getnfile.c \
 	scatter.c
+
+noinst_HEADERS = \
+	gprof.h \
+	m68k.h \
+	vax.h
 
 nodist_gprof_SOURCES = \
 	vers.c
@@ -29,10 +37,10 @@ gprof_CFLAGS = \
 	-Os -g -Wall
 
 gprof_CPPFLAGS = \
-	-I../include \
+	-I$(top_srcdir)/include \
 	-DNeXT_MOD \
 	-DDEBUG
 
 gprof_LDADD = \
-	-L../libstuff \
+	-L$(top_builddir)/libstuff \
 	-lstuff

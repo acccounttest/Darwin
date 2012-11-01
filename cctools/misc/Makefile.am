@@ -44,14 +44,37 @@ install-exec-local:
 	ln -s libtool $(prefix)/${target_noncanonical}/bin/ranlib
 	ln -s ${target_noncanonical}-libtool $(prefix)/bin/${target_noncanonical}-ranlib
 
+uninstall-local:
+	rm -f $(prefix)/bin/${target_noncanonical}-lipo
+	rm -f $(prefix)/bin/${target_noncanonical}-size
+	rm -f $(prefix)/bin/${target_noncanonical}-strings
+	rm -f $(prefix)/bin/${target_noncanonical}-nm
+	rm -f $(prefix)/bin/${target_noncanonical}-libtool
+	rm -f $(prefix)/bin/${target_noncanonical}-checksyms
+	rm -f $(prefix)/bin/${target_noncanonical}-indr
+	rm -f $(prefix)/bin/${target_noncanonical}-strip
+	rm -f $(prefix)/bin/${target_noncanonical}-nmedit
+	rm -f $(prefix)/bin/${target_noncanonical}-segedit
+	rm -f $(prefix)/bin/${target_noncanonical}-cmpdylib
+	rm -f $(prefix)/bin/${target_noncanonical}-pagestuff
+	rm -f $(prefix)/bin/${target_noncanonical}-redo_prebinding
+	rm -f $(prefix)/bin/${target_noncanonical}-seg_addr_table
+	rm -f $(prefix)/bin/${target_noncanonical}-check_dylib
+	rm -f $(prefix)/bin/${target_noncanonical}-seg_hack
+	rm -f $(prefix)/bin/${target_noncanonical}-install_name_tool
+	rm -f $(prefix)/bin/${target_noncanonical}-codesign_allocate
+	rm -f $(prefix)/bin/${target_noncanonical}-ctf_insert
+	rm -f $(prefix)/bin/${target_noncanonical}-ranlib
+	rm -f $(prefix)/${target_noncanonical}/bin/ranlib
+
 lib_LIBRARIES = \
 	libredo_prebinding.a
 
 # Common #
 
 common_cflags = -Os -g -Wall
-common_cppflags = -I../include -DLTO_SUPPORT -DTRIE_SUPPORT
-common_ldadd = -L../libstuff -lstuff
+common_cppflags = -I$(top_srcdir)/include -DLTO_SUPPORT -DTRIE_SUPPORT
+common_ldadd = -L$(top_builddir)/libstuff -lstuff
 
 # LIPO #
 
@@ -196,7 +219,8 @@ nodist_codesign_allocate_SOURCES = vers.c
 codesign_allocate_CFLAGS = $(common_cflags)
 codesign_allocate_CPPFLAGS = $(common_cppflags)
 codesign_allocate_LDADD = $(common_ldadd)
-codesign_allocate_LDFLAGS = -sectcreate __TEXT __info_plist Info.plist
+codesign_allocate_LDFLAGS = -sectcreate __TEXT __info_plist $(srcdir)/Info.plist
+EXTRA_DIST = Info.plist
 
 # ctf_insert #
 
